@@ -11,10 +11,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme._2024_ICT_TEAM"
-        tools:targetApi="31">
+        tools:targetApi="34">
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="false" />
+
+        <activity
+            android:name=".NaviActivity"
+            android:exported="true"
+            android:label="@string/title_activity_navi"
+            android:theme="@style/Theme._2024_ICT_TEAM" >
+
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
