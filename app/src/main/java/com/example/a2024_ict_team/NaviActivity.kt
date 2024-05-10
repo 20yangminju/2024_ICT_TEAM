@@ -21,6 +21,16 @@ class NaviActivity : AppCompatActivity() {
 
         setFragment(TAG_MAIN, Main_Fragment())
 
+        binding.navigationView.setOnItemSelectedListener { item->
+            when(item.itemId){
+                R.id.Main_Fragment -> setFragment(TAG_MAIN, Main_Fragment())
+                R.id.RecordFragment -> setFragment(TAG_RECORD, RecordFragment())
+                R.id.MyPage_Fragment -> setFragment(TAG_MY_PAGE, MyPage_Fragment())
+                R.id.League_Fragment -> setFragment(TAG_LEAGEUE, League_Fragment())
+            }
+            true
+        }
+
     }
 
     private fun setFragment(tag: String, fragment: Fragment){
