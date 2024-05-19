@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "1048678693204",
+    "firebase_url": "https://ict-step-default-rtdb.firebaseio.com",
+    "project_id": "ict-step",
+    "storage_bucket": "ict-step.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1048678693204:android:59d1fc994133a902bd70c1",
+        "android_client_info": {
+          "package_name": "com.example.a2024_ict_team"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmoHWEj_5MuVxDYESGOi1bdF8Z6rpgLvw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
