@@ -11,6 +11,7 @@ private const val TAG_MAIN = "Main_Fragment"
 private const val TAG_RECORD = "RecordFragment"
 private const val TAG_MY_PAGE = "MyPage_Fragment"
 private const val TAG_LEAGEUE = "League_Fragment"
+private const val TAG_TIMER = "Timer_Fragment"
 class NaviActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityNaviBinding
@@ -27,6 +28,7 @@ class NaviActivity : AppCompatActivity() {
                 R.id.RecordFragment -> setFragment(TAG_RECORD, RecordFragment())
                 R.id.MyPage_Fragment -> setFragment(TAG_MY_PAGE, MyPage_Fragment())
                 R.id.League_Fragment -> setFragment(TAG_LEAGEUE, League_Fragment())
+                R.id.Timer_Fragment -> setFragment(TAG_TIMER, Timer_Fragment())
             }
             true
         }
@@ -45,6 +47,7 @@ class NaviActivity : AppCompatActivity() {
         val record = manager.findFragmentByTag(TAG_RECORD)
         val mypage = manager.findFragmentByTag(TAG_MY_PAGE)
         val league = manager.findFragmentByTag(TAG_LEAGEUE)
+        val timer = manager.findFragmentByTag(TAG_TIMER)
 
         if(main != null)
             fragTransaction.hide(main)
@@ -54,6 +57,8 @@ class NaviActivity : AppCompatActivity() {
             fragTransaction.hide(mypage)
         if (league != null)
             fragTransaction.hide(league)
+        if (timer != null)
+            fragTransaction.hide(timer)
 
         if (tag == TAG_MAIN){
             if(main != null)
@@ -70,6 +75,10 @@ class NaviActivity : AppCompatActivity() {
         else if (tag == TAG_LEAGEUE){
             if (league != null)
                 fragTransaction.show(league)
+        }
+        else if(tag == TAG_TIMER) {
+            if (timer != null)
+                fragTransaction.show(timer)
         }
 
 

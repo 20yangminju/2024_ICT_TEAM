@@ -24,5 +24,10 @@
     android:title = "기록"
     android:icon = "@drawable/ic_record"/>
 
+    <item
+        android:id = "@+id/Timer_Fragment"
+        android:title = "타이머"
+        android:icon = "@drawable/ic_record"/>
+
 
 </menu>
