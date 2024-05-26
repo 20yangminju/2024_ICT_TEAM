@@ -1,33 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-
-
     <item
         android:id = "@+id/Main_Fragment"
         android:title = "메인화면"
         android:icon = "@drawable/ic_main"/>
 
-
     <item
-    android:id = "@+id/League_Fragment"
-    android:title = "랭킹"
-    android:icon = "@drawable/ic_league"/>
-
-    <item
-    android:id = "@+id/MyPage_Fragment"
-    android:title = "마이페이지"
-    android:icon = "@drawable/ic_mypage"/>
-
-    <item
-    android:id = "@+id/RecordFragment"
-    android:title = "기록"
-    android:icon = "@drawable/ic_record"/>
-
-    <item
-        android:id = "@+id/Timer_Fragment"
-        android:title = "타이머"
+        android:id = "@+id/RecordFragment"
+        android:title = "기록"
         android:icon = "@drawable/ic_record"/>
+
+    <item
+        android:id = "@+id/League_Fragment"
+        android:title = "랭킹"
+        android:icon = "@drawable/ic_league"/>
+
+    <item
+        android:id = "@+id/MyPage_Fragment"
+        android:title = "마이페이지"
+        android:icon = "@drawable/ic_mypage"/>
+
+
+
 
 
 </menu>
