@@ -20,4 +20,6 @@
     <color name="bottom_nav_selected">#A8E10C</color>
     <color name="bottom_nav_default">#FFFFFF</color>
     <color name="orange">#FFA500</color>
+    <color name="colorPrimary">#FFA500</color> <!-- 주요 색상을 초록색으로 설정 -->
+    <color name="colorAccent">#00C853</color>
 </resources>
