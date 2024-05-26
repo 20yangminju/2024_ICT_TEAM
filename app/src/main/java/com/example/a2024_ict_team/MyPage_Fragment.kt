@@ -9,21 +9,16 @@ import com.bumptech.glide.Glide
 import com.example.a2024_ict_team.databinding.FragmentMyPageBinding
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.database
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.getValue
-
 
 class MyPage_Fragment : Fragment() {
-    lateinit var binding: FragmentMyPageBinding
+    private lateinit var binding: FragmentMyPageBinding
     private lateinit var database: DatabaseReference
-    var userId = "ymj10003"
-
+    private val userId = "ymj10003"
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
     }
 
@@ -31,37 +26,36 @@ class MyPage_Fragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
-        binding = FragmentMyPageBinding.inflate(layoutInflater)
+        binding = FragmentMyPageBinding.inflate(inflater, container, false)
         database = FirebaseDatabase.getInstance().getReference("user")
         return binding.root
-        }
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        database.addListenerForSingleValueEvent(object : ValueEventListener{
+        database.child(userId).addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                val Height = snapshot.child(userId).child("height").value as? Long
-                val Weight = snapshot.child(userId).child("weight").value as? Long
-                val Age = snapshot.child(userId).child("age").value as? Long
-                val ImageURL = snapshot.child(userId).child("UserImage").value as? String
+                val height = snapshot.child("height").value as? Long ?: 0L
+                val weight = snapshot.child("weight").value as? Long ?: 0L
+                val age = snapshot.child("age").value as? Long ?: 0L
+                val imageURL = snapshot.child("UserImage").value as? String
 
                 binding.Username.text = userId
-                binding.Height.text = Height.toString()
-                binding.Weight.text = Weight.toString()
-                binding.Age.text = Age.toString()
-                Glide.with(binding.imageView3.context).load(ImageURL).override(300, 300).into(binding.imageView3)
+                binding.Height.text = height.toString()
+                binding.Weight.text = weight.toString()
+                binding.Age.text = age.toString()
 
-
+                Glide.with(binding.imageView3.context)
+                    .load(imageURL)
+                    .override(300, 300)
+                    .circleCrop()
+                    .into(binding.imageView3)
             }
-            override fun onCancelled(error: DatabaseError){
 
+            override fun onCancelled(error: DatabaseError) {
+                // Handle possible errors.
             }
-        }
-        )
-
+        })
     }
-
-
 }
