@@ -30,18 +30,19 @@ class RecordFragment : Fragment() {
     ): View? {
         binding = FragmentRecordBinding.inflate(inflater, container, false)
         database = FirebaseDatabase.getInstance().reference
-        database = database.child("user").child(userId).child("recentwork")
+        database = database.child("user").child(userId)
 
         database.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 var total = 0
-                for (ds in snapshot.children) {
+                val weight = snapshot.child("weight").value as Long
+                for (ds in snapshot.child("recentwork").children) {
                     val cal = ds.child("time").value as Long
                     val up = ds.child("Up").value as Long
                     total += if (up.toInt() == 1) {
-                        cal.toInt() * 8
+                        cal.toInt() * 8 * weight.toInt()
                     } else {
-                        cal.toInt() * 4
+                        cal.toInt() * 4 * weight.toInt()
                     }
                 }
                 binding.textView4.text = total.toString()
