@@ -11,13 +11,14 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 class RecordFragment : Fragment() {
-    lateinit var binding: FragmentRecordBinding
+    private lateinit var binding: FragmentRecordBinding
     private lateinit var database: DatabaseReference
 
-    var  userId = "ymj10003"
+    private val userId = "ymj10003"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,33 +28,42 @@ class RecordFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentRecordBinding.inflate(layoutInflater)
+        binding = FragmentRecordBinding.inflate(inflater, container, false)
         database = FirebaseDatabase.getInstance().reference
         database = database.child("user").child(userId).child("recentwork")
 
-        database.addListenerForSingleValueEvent(object : ValueEventListener{
+        database.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 var total = 0
-                for(ds in snapshot.children){
+                for (ds in snapshot.children) {
                     val cal = ds.child("time").value as Long
-                    val Up = ds.child("Up").value as Long
-                    if(Up.toInt() == 1){
-                        total += cal.toInt() * 8
+                    val up = ds.child("Up").value as Long
+                    total += if (up.toInt() == 1) {
+                        cal.toInt() * 8
+                    } else {
+                        cal.toInt() * 4
                     }
-                    else
-                        total +=cal.toInt() * 4
-
                 }
                 binding.textView4.text = total.toString()
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+                // Handle database error
             }
         })
+
+        setupRecyclerView()
         return binding.root
     }
 
-
-
+    private fun setupRecyclerView() {
+        val workoutList = listOf(
+            WorkoutRecord("2024년 05월 26일", "1번 계단 2분"),
+            WorkoutRecord("2024년 05월 26일", "2번 계단 5분"),
+            WorkoutRecord("2024년 05월 26일", "3번 계단 3분")
+        )
+        val workoutAdapter = WorkoutRecordAdapter(workoutList)
+        binding.rvWorkoutRecords.layoutManager = LinearLayoutManager(requireContext())
+        binding.rvWorkoutRecords.adapter = workoutAdapter
+    }
 }
