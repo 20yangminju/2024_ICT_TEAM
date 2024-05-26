@@ -1,20 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout"
-    style="@style/ConstraintLayout"
-    app:layoutDescription="@xml/fragment_main__scene"
-    tools:context=".Main_Fragment">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".MainActivity">
 
+    <!-- 상단 텍스트 -->
     <TextView
-        android:id="@+id/page_text"
-        android:layout_width="98dp"
-        android:layout_height="31dp"
-        android:layout_marginTop="16dp"
-        android:text="메인페이지"
-        android:textSize="20sp"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="16dp" />
+        android:id="@+id/top_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="반갑습니다 :)\n오늘의 계단오르기 운동을 분석했어요"
+        android:textSize="18sp"
+        android:textColor="@color/text_primary"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:gravity="center" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- 원형 진행바와 점수 -->
+    <RelativeLayout
+        android:id="@+id/circle_progress_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/top_text"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp">
+
+        <!-- 여기에 실제 원형 진행바와 점수를 구현하는 뷰를 추가해야 합니다 -->
+        <!-- 예시: CircleProgressView와 TextView로 구성 -->
+
+        <View
+            android:id="@+id/circle_progress"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:background="@drawable/circle_progress_background"
+            android:layout_centerInParent="true" />
+
+        <TextView
+            android:id="@+id/score_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="92점"
+            android:textSize="32sp"
+            android:textColor="@color/text_primary"
+            android:layout_centerInParent="true"
+            android:gravity="center" />
+    </RelativeLayout>
+
+    <!-- 오늘 활동량 텍스트 -->
+    <TextView
+        android:id="@+id/today_activity_data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="오늘의 활동량: 92점"
+        android:textSize="16sp"
+        android:textColor="@color/text_secondary"
+        android:layout_below="@id/circle_progress_container"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp" />
+
+    <!-- 활동량 바 -->
+    <LinearLayout
+        android:id="@+id/activity_bar_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_below="@id/today_activity_data">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="오늘 목표치 달성률"
+            android:textSize="18sp"
+            android:textColor="@color/text_primary"
+            android:layout_gravity="center_horizontal" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:progress="58"
+            android:max="100"
+            android:progressDrawable="@drawable/progress_bar_custom" />
+    </LinearLayout>
+
+    <!-- 추가 정보 리스트 -->
+    <LinearLayout
+        android:id="@+id/info_list_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:layout_below="@id/activity_bar_container">
+
+        <!-- 각 항목을 여기에 추가 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="최근 계단 오르기 기록"
+            android:textSize="16sp"
+            android:textColor="@color/text_secondary" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="XXXX년 XX월 XX일 XX시 XX분 : XXXX계단 46초"
+            android:textSize="16sp"
+            android:textColor="@color/text_secondary"
+            android:layout_marginTop="4dp" />
+    </LinearLayout>
+
+</RelativeLayout>
