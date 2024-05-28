@@ -19,7 +19,7 @@
                     android:type="sweep"
                     android:useLevel="true"
                     android:startColor="#FF0000"
-                    android:endColor="#FFA500" />
+                    android:endColor="#FF7F50" />
             </shape>
         </rotate>
     </item>
