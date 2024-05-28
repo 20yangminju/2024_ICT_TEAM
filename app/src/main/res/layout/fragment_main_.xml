@@ -17,154 +17,182 @@
         android:layout_alignParentStart="true"
         android:layout_margin="16dp" />
 
-    <!-- 광고 배너 -->
-    <ImageView
-        android:id="@+id/ad_banner"
+    <ScrollView
+        android:id="@+id/scroll_view"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="match_parent"
         android:layout_below="@id/home_title"
-        android:layout_marginTop="10dp"
-        android:src="@drawable/ad_banner_placeholder"
-        android:scaleType="fitCenter" />
+        android:layout_marginTop="10dp">
 
-    <!-- 상단 텍스트 -->
-    <TextView
-        android:id="@+id/top_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="반갑습니다 :)\n오늘의 계단오르기 운동을 분석했어요"
-        android:textSize="18sp"
-        android:textColor="@color/text_primary"
-        android:layout_below="@id/ad_banner"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:gravity="center" />
-
-    <!-- 원형 진행바와 점수 -->
-    <RelativeLayout
-        android:id="@+id/circle_progress_container"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/top_text"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp">
-
-        <!-- Circular ProgressBar -->
-        <ProgressBar
-            android:id="@+id/circular_progress_bar"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="300dp"
-            android:layout_height="300dp"
-            android:progressDrawable="@drawable/circular_progress_bar"
-            android:max="5000"
-            android:progress="4321"
-            android:layout_centerInParent="true"
-            android:rotation="270" />
-
-        <TextView
-            android:id="@+id/progress_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="4321\n/5000"
-            android:textSize="32sp"
-            android:textColor="@color/text_primary"
-            android:layout_centerInParent="true"
-            android:gravity="center" />
-    </RelativeLayout>
-
-    <!-- 맞춤 팁 카드 -->
-    <LinearLayout
-        android:id="@+id/custom_tip_card"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp"
-        android:background="@drawable/card_background"
-        android:layout_below="@id/circle_progress_container"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp">
-
-        <TextView
-            android:id="@+id/custom_tip_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="맞춤 팁"
-            android:textSize="18sp"
-            android:textColor="@color/text_primary"
-            android:layout_gravity="center_horizontal"
-            android:paddingBottom="10dp" />
-
-        <TextView
-            android:id="@+id/custom_tip_content"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="오늘의 계단오르기 운동을 더욱 효과적으로 할 수 있는 팁을 확인해보세요!"
-            android:textSize="16sp"
-            android:textColor="@color/text_secondary"
-            android:layout_gravity="center_horizontal" />
-    </LinearLayout>
-
-    <!-- 오늘 활동량 텍스트 -->
-    <TextView
-        android:id="@+id/today_activity_data"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/custom_tip_card"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp" />
-
-    <!-- 활동량 바 -->
-    <LinearLayout
-        android:id="@+id/activity_bar_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp"
-        android:layout_below="@id/today_activity_data">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="오늘 목표치 달성률"
-            android:textSize="18sp"
-            android:textColor="@color/text_primary"
-            android:layout_gravity="center_horizontal" />
-
-        <ProgressBar
-            android:id="@+id/progress_bar"
-            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:progress="58"
-            android:max="100"
-            android:progressDrawable="@drawable/progress_bar_custom" />
-    </LinearLayout>
+            android:orientation="vertical"
+            android:paddingBottom="16dp">
 
-    <!-- 추가 정보 리스트 -->
-    <LinearLayout
-        android:id="@+id/info_list_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp"
-        android:layout_below="@id/activity_bar_container">
+            <!-- 상단 텍스트 -->
+            <TextView
+                android:id="@+id/top_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="반갑습니다 :)\n오늘의 계단오르기 운동을 분석했어요"
+                android:textSize="18sp"
+                android:textColor="@color/text_primary"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:gravity="center" />
 
-        <!-- 각 항목을 여기에 추가 -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="최근 계단 오르기 기록"
-            android:textSize="16sp"
-            android:textColor="@color/text_secondary" />
+            <!-- 원형 진행바와 점수 -->
+            <RelativeLayout
+                android:id="@+id/circle_progress_container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="XXXX년 XX월 XX일 XX시 XX분 : XXXX계단 46초"
-            android:textSize="16sp"
-            android:textColor="@color/text_secondary"
-            android:layout_marginTop="4dp" />
-    </LinearLayout>
+                <!-- Circular ProgressBar -->
+                <ProgressBar
+                    android:id="@+id/circular_progress_bar"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="300dp"
+                    android:layout_height="300dp"
+                    android:progressDrawable="@drawable/circular_progress_bar"
+                    android:max="5000"
+                    android:progress="4321"
+                    android:layout_centerInParent="true"
+                    android:rotation="270" />
+
+                <TextView
+                    android:id="@+id/progress_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4321\n/5000"
+                    android:textSize="32sp"
+                    android:textColor="@color/text_primary"
+                    android:layout_centerInParent="true"
+                    android:gravity="center" />
+            </RelativeLayout>
+
+            <!-- 맞춤 팁 카드 1 -->
+            <LinearLayout
+                android:id="@+id/custom_tip_card1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:background="@drawable/card_background"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:elevation="4dp">
+
+                <TextView
+                    android:id="@+id/custom_tip_title1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="계단 오르기 팁"
+                    android:textSize="18sp"
+                    android:textColor="@color/text_primary"
+                    android:layout_gravity="center_horizontal"
+                    android:paddingBottom="10dp" />
+
+                <TextView
+                    android:id="@+id/custom_tip_content1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="계단 오르기는 심장 건강을 향상시키고 다리 근육을 강화하는 데 도움이 됩니다. 매일 계단을 오르내리는 습관을 들이면 체력을 기르고 칼로리를 소모하는 효과를 볼 수 있습니다."
+                    android:textSize="16sp"
+                    android:textColor="@color/text_secondary"
+                    android:layout_gravity="center_horizontal" />
+            </LinearLayout>
+
+            <!-- 맞춤 팁 카드 2 -->
+            <LinearLayout
+                android:id="@+id/custom_tip_card2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:background="@drawable/card_background"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:elevation="4dp">
+
+                <TextView
+                    android:id="@+id/custom_tip_title2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="M2E (Move to Earn) 팁"
+                    android:textSize="18sp"
+                    android:textColor="@color/text_primary"
+                    android:layout_gravity="center_horizontal"
+                    android:paddingBottom="10dp" />
+
+                <TextView
+                    android:id="@+id/custom_tip_content2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="M2E 프로그램에 참여하여 일상적인 활동으로 보상을 받을 수 있습니다."
+                    android:textSize="16sp"
+                    android:textColor="@color/text_secondary"
+                    android:layout_gravity="center_horizontal" />
+            </LinearLayout>
+
+            <!-- 맞춤 팁 카드 3 -->
+            <LinearLayout
+                android:id="@+id/custom_tip_card3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:background="@drawable/card_background"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:elevation="4dp">
+
+                <TextView
+                    android:id="@+id/custom_tip_title3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="건강 및 보험료 인하 팁"
+                    android:textSize="18sp"
+                    android:textColor="@color/text_primary"
+                    android:layout_gravity="center_horizontal"
+                    android:paddingBottom="10dp" />
+
+                <TextView
+                    android:id="@+id/custom_tip_content3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="규칙적인 운동과 건강한 식습관을 통해 전반적인 건강 상태를 개선하면 보험료를 인하할 수 있습니다. 많은 보험사들이 건강 지표를 기준으로 보험료를 산정하기 때문에, 건강을 개선하면 경제적 혜택을 볼 수 있습니다."
+                    android:textSize="16sp"
+                    android:textColor="@color/text_secondary"
+                    android:layout_gravity="center_horizontal" />
+            </LinearLayout>
+
+            <!-- 오늘 활동량 텍스트 -->
+            <TextView
+                android:id="@+id/today_activity_data"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center_horizontal" />
+
+            <!-- 추가 정보 리스트 -->
+            <LinearLayout
+                android:id="@+id/info_list_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </RelativeLayout>
