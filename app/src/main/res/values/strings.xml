@@ -93,4 +93,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_navi_activity.kt">NaviActivity.kt</string>
     <string name="title_activity_navi">NaviActivity</string>
+    <string name="ranking_trophy_image_desc">랭킹 트로피 이미지</string>
+
 </resources>

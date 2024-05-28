@@ -1,10 +1,31 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".MainActivity">
+
+    <!-- 상단 제목 -->
+    <TextView
+        android:id="@+id/home_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="홈"
+        android:textSize="24sp"
+        android:textColor="@color/text_primary"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_margin="16dp" />
+
+    <!-- 광고 배너 -->
+    <ImageView
+        android:id="@+id/ad_banner"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@id/home_title"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ad_banner_placeholder"
+        android:scaleType="fitCenter" />
 
     <!-- 상단 텍스트 -->
     <TextView
@@ -14,8 +35,9 @@
         android:text="반갑습니다 :)\n오늘의 계단오르기 운동을 분석했어요"
         android:textSize="18sp"
         android:textColor="@color/text_primary"
+        android:layout_below="@id/ad_banner"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:gravity="center" />
 
     <!-- 원형 진행바와 점수 -->
@@ -27,36 +49,68 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp">
 
-        <!-- 여기에 실제 원형 진행바와 점수를 구현하는 뷰를 추가해야 합니다 -->
-        <!-- 예시: CircleProgressView와 TextView로 구성 -->
-
-        <View
-            android:id="@+id/circle_progress"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:background="@drawable/circle_progress_background"
-            android:layout_centerInParent="true" />
+        <!-- Circular ProgressBar -->
+        <ProgressBar
+            android:id="@+id/circular_progress_bar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:progressDrawable="@drawable/circular_progress_bar"
+            android:max="5000"
+            android:progress="4321"
+            android:layout_centerInParent="true"
+            android:rotation="270" />
 
         <TextView
-            android:id="@+id/score_text"
+            android:id="@+id/progress_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="92점"
+            android:text="4321\n/5000"
             android:textSize="32sp"
             android:textColor="@color/text_primary"
             android:layout_centerInParent="true"
             android:gravity="center" />
     </RelativeLayout>
 
+    <!-- 맞춤 팁 카드 -->
+    <LinearLayout
+        android:id="@+id/custom_tip_card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="@drawable/card_background"
+        android:layout_below="@id/circle_progress_container"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp">
+
+        <TextView
+            android:id="@+id/custom_tip_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="맞춤 팁"
+            android:textSize="18sp"
+            android:textColor="@color/text_primary"
+            android:layout_gravity="center_horizontal"
+            android:paddingBottom="10dp" />
+
+        <TextView
+            android:id="@+id/custom_tip_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="오늘의 계단오르기 운동을 더욱 효과적으로 할 수 있는 팁을 확인해보세요!"
+            android:textSize="16sp"
+            android:textColor="@color/text_secondary"
+            android:layout_gravity="center_horizontal" />
+    </LinearLayout>
+
     <!-- 오늘 활동량 텍스트 -->
     <TextView
         android:id="@+id/today_activity_data"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="오늘의 활동량: 92점"
-        android:textSize="16sp"
-        android:textColor="@color/text_secondary"
-        android:layout_below="@id/circle_progress_container"
+        android:layout_below="@id/custom_tip_card"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp" />
 
