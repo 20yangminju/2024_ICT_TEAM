@@ -45,6 +45,8 @@ class RecordFragment : Fragment() {
                         cal.toInt() * 4 * weight.toInt()
                     }
                 }
+
+                total = total / 200
                 binding.textView4.text = total.toString()
             }
 
