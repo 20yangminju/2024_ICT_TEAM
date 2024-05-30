@@ -48,4 +48,5 @@ class Timer_Fragment : Fragment() {
         // Inflate the layout for this fragment
         return binding.root
     }
+
 }
