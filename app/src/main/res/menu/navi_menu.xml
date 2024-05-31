@@ -12,6 +12,11 @@
         android:icon = "@drawable/ic_record"/>
 
     <item
+        android:id = "@+id/Timer_Fragment"
+        android:title = "운동하기"
+        android:icon = "@drawable/ic_stairs"/>
+
+    <item
         android:id = "@+id/League_Fragment"
         android:title = "랭킹"
         android:icon = "@drawable/ic_league"/>
