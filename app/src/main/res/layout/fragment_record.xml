@@ -7,37 +7,24 @@
     tools:context=".RecordFragment">
 
     <TextView
-        android:id="@+id/Record_page"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="나의 기록"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_margin="16dp"/>
-
-    <TextView
         android:id="@+id/cal_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
         android:text="계단으로 소모한 칼로리 :"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/Record_page" />
+        tools:layout_editor_absoluteY="66dp" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
-        android:layout_marginTop="23dp"
         android:text="TextView"
         android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@id/cal_text"
-        app:layout_constraintTop_toBottomOf="@id/Record_page"/>
+        tools:layout_editor_absoluteY="69dp" />
 
     <!-- 직사각형 하얀 카드 -->
     <androidx.cardview.widget.CardView
