@@ -42,7 +42,7 @@ class NaviActivity : AppCompatActivity() {
                 R.id.RecordFragment -> setFragment(TAG_RECORD, RecordFragment())
                 R.id.League_Fragment -> setFragment(TAG_LEAGUE, League_Fragment())
                 R.id.MyPage_Fragment -> setFragment(TAG_MY_PAGE, MyPage_Fragment())
-                //R.id.Timer_Fragment -> setFragment(TAG_TIMER, Timer_Fragment())
+                R.id.Timer_Fragment -> setFragment(TAG_TIMER, Timer_Fragment())
             }
             true
         }
