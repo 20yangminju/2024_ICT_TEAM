@@ -1,27 +1,69 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center">
+    android:background="@color/orange_accent">
 
-    <!-- Add a TextView for the timer -->
+    <!-- NFC Tag message TextView above the timer -->
+    <TextView
+        android:id="@+id/nfcTagMessageTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="180dp"
+        android:text="계단 벽면의 NFC를 태깅하세요\n"
+        android:textSize="24sp"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif" />
+
+    <!-- Timer TextView -->
     <TextView
         android:id="@+id/timerTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Timer"
-        android:textSize="24sp" />
+        android:layout_centerInParent="true"
+        android:text="0:00"
+        android:textSize="120sp"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-black" />
 
-    <!-- Add a TextView for NFC data -->
+    <!-- Exercise message TextView below the timer -->
+    <TextView
+        android:id="@+id/exerciseMessageTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/timerTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:text="\n한국항공대역의 2번 출구 방향\n계단을 오르고 있어요 🔥\n\n계단 오르기 완료 후\n계단 벽면의 NFC에 태깅을 하면\n운동 측정이 완료됩니다"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:textAlignment="center"
+        android:fontFamily="sans-serif"
+        android:visibility="invisible" />
+
+    <!-- NFC Data TextView -->
     <TextView
         android:id="@+id/nfcDataTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
         android:text="NFC Data"
-        android:textSize="18sp"
-        android:layout_marginTop="16dp" />
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:fontFamily="sans-serif" />
 
-    <!-- Other UI elements can be added here -->
+    <ImageView
+        android:id="@+id/adBanner"
+        android:layout_width="match_parent"
+        android:layout_height="233dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="-70dp"
+        android:src="@drawable/ad_banner" />
 
-</LinearLayout>
+</RelativeLayout>
