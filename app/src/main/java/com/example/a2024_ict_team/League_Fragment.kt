@@ -12,15 +12,15 @@ class League_Fragment : Fragment() {
     private lateinit var leagueAdapter: LeagueAdapter
     private lateinit var binding: FragmentLeagueBinding
 
-    private var items = ArrayList<League_item>()
+    private var items = ArrayList<LeagueItem>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        items.add(League_item("이유경", "11", "1280", "1"))
-        items.add(League_item("양민주", "9", "1000", "2"))
-        items.add(League_item("정윤석", "7", "980", "3"))
-        items.add(League_item("정혜윤", "4", "300", "4"))
-        items.add(League_item("김세훈", "5", "500", "5"))
+        items.add(LeagueItem("이유경", "1280 K", "1"))
+        items.add(LeagueItem("양민주", "1000 K", "2"))
+        items.add(LeagueItem("정윤석", "980 K", "3"))
+        items.add(LeagueItem("정혜윤", "300 K", "4"))
+        items.add(LeagueItem("김세훈", "500 K", "5"))
     }
 
     override fun onCreateView(
