@@ -4,9 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
     tools:context=".League_Fragment">
 
+    <!-- 트로피 이미지 -->
     <ImageView
         android:id="@+id/ranking_trophy_image"
         android:layout_width="332dp"
@@ -18,11 +18,43 @@
         android:scaleType="fitCenter"
         android:src="@drawable/ranking_trophy" />
 
+    <!-- 상단 배너 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="WIN $10!"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Today's highest token balance wins!"
+            android:textSize="14sp"
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Contest ends in: 12h 18m"
+            android:textSize="12sp"
+            android:textColor="@android:color/black" />
+    </LinearLayout>
+
+    <!-- 리사이클러뷰 -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_league"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:padding="8dp"
         tools:listitem="@layout/item_recycler_league" />
 
 </LinearLayout>
