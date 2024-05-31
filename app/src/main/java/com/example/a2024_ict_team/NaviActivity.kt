@@ -215,11 +215,26 @@ class NaviActivity : AppCompatActivity() {
         if (timer != null) fragTransaction.hide(timer)
 
         when (tag) {
-            TAG_MAIN -> if (main != null) fragTransaction.show(main)
-            TAG_RECORD -> if (record != null) fragTransaction.show(record)
-            TAG_MY_PAGE -> if (mypage != null) fragTransaction.show(mypage)
-            TAG_LEAGUE -> if (league != null) fragTransaction.show(league)
-            TAG_TIMER -> if (timer != null) fragTransaction.show(timer)
+            TAG_MAIN -> {
+                if (main != null) fragTransaction.show(main)
+                supportActionBar?.title = "홈"
+            }
+            TAG_RECORD -> {
+                if (record != null) fragTransaction.show(record)
+                supportActionBar?.title = "기록"
+            }
+            TAG_MY_PAGE -> {
+                if (mypage != null) fragTransaction.show(mypage)
+                supportActionBar?.title = "마이페이지"
+            }
+            TAG_LEAGUE -> {
+                if (league != null) fragTransaction.show(league)
+                supportActionBar?.title = "랭킹"
+            }
+            TAG_TIMER -> {
+                if (timer != null) fragTransaction.show(timer)
+                supportActionBar?.title = "타이머"
+            }
         }
 
         fragTransaction.commitAllowingStateLoss()

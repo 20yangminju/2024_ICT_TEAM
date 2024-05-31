@@ -8,7 +8,7 @@
     </item>
     <item>
         <shape>
-            <solid android:color="@android:color/transparent" /> <!-- 배경을 투명으로 설정 -->
+            <solid android:color="@android:color/transparent" />
             <corners android:radius="25dp" />
         </shape>
     </item>
