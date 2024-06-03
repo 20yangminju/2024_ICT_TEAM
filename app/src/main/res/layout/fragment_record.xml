@@ -42,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:text="◀"
                 android:gravity="center"
-                android:layout_margin="8dp"
+                android:layout_margin="4dp"
                 android:textSize="16sp"
                 android:textColor="@android:color/white" />
 
@@ -51,9 +51,9 @@
                 android:layout_height="wrap_content"
                 android:text="Mon\n3"
                 android:gravity="center"
-                android:layout_margin="8dp"
-                android:textSize="18sp"
-                android:textStyle="bold"
+                android:layout_margin="4dp"
+                android:textSize="16sp"
+                android:textStyle="normal"
                 android:textColor="@android:color/white" />
 
             <TextView
@@ -61,9 +61,9 @@
                 android:layout_height="wrap_content"
                 android:text="Tue\n4"
                 android:gravity="center"
-                android:layout_margin="8dp"
-                android:textSize="18sp"
-                android:textStyle="bold"
+                android:layout_margin="4dp"
+                android:textSize="16sp"
+                android:textStyle="normal"
                 android:textColor="@android:color/white" />
 
             <TextView
@@ -71,9 +71,9 @@
                 android:layout_height="wrap_content"
                 android:text="Wed\n5"
                 android:gravity="center"
-                android:layout_margin="8dp"
-                android:textSize="18sp"
-                android:textStyle="bold"
+                android:layout_margin="4dp"
+                android:textSize="16sp"
+                android:textStyle="normal"
                 android:textColor="@android:color/white" />
 
             <TextView
@@ -81,9 +81,9 @@
                 android:layout_height="wrap_content"
                 android:text="Thu\n6"
                 android:gravity="center"
-                android:layout_margin="8dp"
-                android:textSize="18sp"
-                android:textStyle="bold"
+                android:layout_margin="4dp"
+                android:textSize="16sp"
+                android:textStyle="normal"
                 android:textColor="@android:color/white" />
 
             <TextView
@@ -92,8 +92,8 @@
                 android:text="Fri\n7"
                 android:gravity="center"
                 android:background="@drawable/background_selected_day"
-                android:layout_margin="8dp"
-                android:textSize="18sp"
+                android:layout_margin="4dp"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 android:textColor="@android:color/white" />
 
@@ -102,9 +102,9 @@
                 android:layout_height="wrap_content"
                 android:text="Sat\n8"
                 android:gravity="center"
-                android:layout_margin="8dp"
-                android:textSize="18sp"
-                android:textStyle="bold"
+                android:layout_margin="4dp"
+                android:textSize="16sp"
+                android:textStyle="normal"
                 android:textColor="@android:color/white" />
 
             <TextView
@@ -112,9 +112,9 @@
                 android:layout_height="wrap_content"
                 android:text="Sun\n9"
                 android:gravity="center"
-                android:layout_margin="8dp"
-                android:textSize="18sp"
-                android:textStyle="bold"
+                android:layout_margin="4dp"
+                android:textSize="16sp"
+                android:textStyle="normal"
                 android:textColor="@android:color/white" />
 
             <TextView
@@ -122,7 +122,7 @@
                 android:layout_height="wrap_content"
                 android:text="▶"
                 android:gravity="center"
-                android:layout_margin="8dp"
+                android:layout_margin="4dp"
                 android:textSize="16sp"
                 android:textColor="@android:color/white" />
         </LinearLayout>
@@ -152,7 +152,7 @@
 
             <TextView
                 android:id="@+id/tvGoalAchieved"
-                android:layout_width="340sp"
+                android:layout_width="260sp"
                 android:layout_height="wrap_content"
                 android:padding="16dp"
                 android:text="일일 목표를 달성했습니다"
@@ -223,7 +223,8 @@
                         android:layout_height="wrap_content"
                         android:text="항공대입구역 1번 계단"
                         android:textColor="@android:color/black"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        android:textStyle="bold"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -270,7 +271,8 @@
                         android:layout_height="wrap_content"
                         android:text="한국항공대학교 학생회관 정문 계단"
                         android:textColor="@android:color/black"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        android:textStyle="bold"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -317,7 +319,8 @@
                         android:layout_height="wrap_content"
                         android:text="항공대입구역 1번 계단"
                         android:textColor="@android:color/black"
-                        android:textSize="16sp" />
+                        android:textSize="16sp"
+                        android:textStyle="bold"/>
 
                     <TextView
                         android:layout_width="wrap_content"
