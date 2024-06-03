@@ -25,7 +25,7 @@
             android:text="2024년 6월 7일 금요일"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:textColor="@android:color/white"
+            android:textColor="@color/black"
             android:layout_gravity="center_horizontal" />
 
         <LinearLayout
@@ -45,7 +45,7 @@
                 android:gravity="center"
                 android:layout_margin="4dp"
                 android:textSize="16sp"
-                android:textColor="@android:color/white" />
+                android:textColor="@color/black" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -55,7 +55,7 @@
                 android:layout_margin="4dp"
                 android:textSize="16sp"
                 android:textStyle="normal"
-                android:textColor="@android:color/white" />
+                android:textColor="@color/black" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -65,7 +65,7 @@
                 android:layout_margin="4dp"
                 android:textSize="16sp"
                 android:textStyle="normal"
-                android:textColor="@android:color/white" />
+                android:textColor="@color/black" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -75,7 +75,7 @@
                 android:layout_margin="4dp"
                 android:textSize="16sp"
                 android:textStyle="normal"
-                android:textColor="@android:color/white" />
+                android:textColor="@color/black" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -85,7 +85,7 @@
                 android:layout_margin="4dp"
                 android:textSize="16sp"
                 android:textStyle="normal"
-                android:textColor="@android:color/white" />
+                android:textColor="@color/black" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -96,7 +96,7 @@
                 android:layout_margin="4dp"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:textColor="@android:color/white" />
+                android:textColor="@color/black" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -106,7 +106,7 @@
                 android:layout_margin="4dp"
                 android:textSize="16sp"
                 android:textStyle="normal"
-                android:textColor="@android:color/white" />
+                android:textColor="@color/black" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -116,7 +116,7 @@
                 android:layout_margin="4dp"
                 android:textSize="16sp"
                 android:textStyle="normal"
-                android:textColor="@android:color/white" />
+                android:textColor="@color/black" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -125,7 +125,7 @@
                 android:gravity="center"
                 android:layout_margin="4dp"
                 android:textSize="16sp"
-                android:textColor="@android:color/white" />
+                android:textColor="@color/black" />
         </LinearLayout>
 
     </LinearLayout>
@@ -164,12 +164,12 @@
                     android:text="일일 목표를 달성했습니다"
                     android:gravity="center"
                     android:textColor="@color/orange_accent"
-                    android:textSize="20sp"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <ImageView
-                    android:layout_width="62dp"
-                    android:layout_height="62dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:layout_marginStart="0dp"
                     android:src="@drawable/ic_check_circle"
                     android:gravity="center"
