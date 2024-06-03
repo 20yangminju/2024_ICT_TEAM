@@ -27,7 +27,8 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:background="?android:attr/selectableItemBackgroundBorderless"
-            android:strokeColor="@android:color/white" />
+            android:strokeColor="@android:color/white"
+            />
 
         <!-- 사용자 이름 -->
         <TextView
@@ -40,7 +41,8 @@
             android:textStyle="bold"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="0dp"
-            android:layout_marginBottom="16dp"/>
+            android:layout_marginBottom="16dp"
+            android:textColor="@android:color/black"/>
     </LinearLayout>
 
     <!-- Bottom Section with White Background and Rounded Corners -->
