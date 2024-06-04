@@ -38,8 +38,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
         android:text="\n한국항공대역의 2번 출구 방향\n계단을 오르고 있어요 🔥\n\n계단 오르기 완료 후\n계단 벽면의 NFC에 태깅을 하면\n운동 측정이 완료됩니다"
-        android:textSize="16sp"
-        android:textColor="@android:color/black"
+        android:textSize="14sp"
+        android:textColor="@color/username_text"
         android:textAlignment="center"
         android:fontFamily="sans-serif"
         android:visibility="invisible" />

@@ -1,6 +1,5 @@
 package com.example.a2024_ict_team
 
-import android.app.AlertDialog
 import android.nfc.NfcAdapter
 import android.nfc.Tag
 import android.nfc.tech.Ndef
@@ -38,14 +37,12 @@ class Timer_Fragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_timer_, container, false)
         timerTextView = view.findViewById(R.id.timerTextView)
         nfcDataTextView = view.findViewById(R.id.nfcDataTextView)
         exerciseMessageTextView = view.findViewById(R.id.exerciseMessageTextView)
         nfcTagMessageTextView = view.findViewById(R.id.nfcTagMessageTextView)
 
-        // Initialize NFC Adapter
         val nfcAdapter = NfcAdapter.getDefaultAdapter(activity)
         if (nfcAdapter == null) {
             Toast.makeText(activity, "NFC is not available on this device.", Toast.LENGTH_SHORT).show()
@@ -56,7 +53,6 @@ class Timer_Fragment : Fragment() {
         return view
     }
 
-    // Handle NFC tag detection
     private fun handleNfcTag(tag: Tag?) {
         if (tag != null) {
             val ndef = Ndef.get(tag)
@@ -70,7 +66,7 @@ class Timer_Fragment : Fragment() {
                         nfcDataTextView.text = "NFC Data: $text"
                         if (text.isNotEmpty()) {
                             val secondLastChar = if (text.length > 1) text[text.length - 2] else '1'
-                            exerciseMessageTextView.text = "\n한국항공대역의 ${secondLastChar}번 출구 방향 계단을 오르고 있어요 🔥\n\n계단 오르기 완료 후\n계단 벽면의 NFC에 태깅을 하면 운동 측정이 완료됩니다."
+                            exerciseMessageTextView.text = "한국항공대역의 ${secondLastChar}번 출구 방향\n계단을 오르고 있어요 🔥\n\n계단 오르기 완료 후\n계단 벽면의 NFC에 태깅을 하면\n운동 측정이 완료됩니다."
                             val lastChar = text.last()
                             if (lastChar == '1') {
                                 startTimer()
@@ -85,7 +81,6 @@ class Timer_Fragment : Fragment() {
         }
     }
 
-    // Start the timer
     private fun startTimer() {
         if (!isTimerRunning) {
             secondsElapsed = 0
@@ -96,7 +91,6 @@ class Timer_Fragment : Fragment() {
         }
     }
 
-    // Stop the timer
     private fun stopTimer() {
         if (isTimerRunning) {
             handler.removeCallbacks(runnable)
@@ -107,14 +101,8 @@ class Timer_Fragment : Fragment() {
         }
     }
 
-    // Show completion dialog
     private fun showCompletionDialog() {
-        val builder = AlertDialog.Builder(activity)
-        builder.setTitle("운동 측정 완료")
-        builder.setMessage("운동 측정이 완료되었습니다.")
-        builder.setPositiveButton("확인") { dialog, _ ->
-            dialog.dismiss()
-        }
-        builder.show()
+        val dialog = CompletionDialogFragment()
+        dialog.show(parentFragmentManager, "CompletionDialog")
     }
 }
