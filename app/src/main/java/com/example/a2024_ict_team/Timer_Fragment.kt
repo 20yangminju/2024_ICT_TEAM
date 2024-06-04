@@ -66,13 +66,14 @@ class Timer_Fragment : Fragment() {
                         nfcDataTextView.text = "NFC Data: $text"
                         if (text.isNotEmpty()) {
                             val secondLastChar = if (text.length > 1) text[text.length - 2] else '1'
-                            exerciseMessageTextView.text = "한국항공대역의 ${secondLastChar}번 출구 방향\n계단을 오르고 있어요 🔥\n\n계단 오르기 완료 후\n계단 벽면의 NFC에 태깅을 하면\n운동 측정이 완료됩니다."
+                            exerciseMessageTextView.text = "\n한국항공대역의 ${secondLastChar}번 출구 방향 계단을 오르고 있어요 🔥\n\n계단 오르기 완료 후\n계단 벽면의 NFC에 태깅을 하면 운동 측정이 완료됩니다."
                             val lastChar = text.last()
                             if (lastChar == '1') {
                                 startTimer()
                             } else if (lastChar == '0') {
                                 stopTimer()
-                                showCompletionDialog()
+                                val showDailyGoalAchieved = (secondLastChar == '1')
+                                showCompletionDialog(showDailyGoalAchieved)
                             }
                         }
                     }
@@ -101,8 +102,8 @@ class Timer_Fragment : Fragment() {
         }
     }
 
-    private fun showCompletionDialog() {
-        val dialog = CompletionDialogFragment()
+    private fun showCompletionDialog(showDailyGoalAchieved: Boolean) {
+        val dialog = CompletionDialogFragment(showDailyGoalAchieved)
         dialog.show(parentFragmentManager, "CompletionDialog")
     }
 }
