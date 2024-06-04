@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <color android:color="#FFFFFF"/> <!-- Replace with your desired background color -->
+    </item>
+    <item>
+        <bitmap
+            android:gravity="center"
+            android:src="@drawable/logo" /> <!-- Ensure 'logo.png' is in the 'res/drawable' directory -->
+    </item>
+</layer-list>
