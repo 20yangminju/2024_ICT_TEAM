@@ -1,45 +1,33 @@
 package com.example.a2024_ict_team
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.a2024_ict_team.databinding.ItemRecyclerLeagueBinding
 
-class LeagueAdapter(
-    private var items: ArrayList<LeagueItem>,
-    private var fragment: Fragment
-) : RecyclerView.Adapter<LeagueAdapter.Holder>() {
+class LeagueAdapter(private val userList: List<LeagueItem>) :
+    RecyclerView.Adapter<LeagueAdapter.LeagueViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
-        val binding = ItemRecyclerLeagueBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return Holder(binding)
+    class LeagueViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val tvRank: TextView = itemView.findViewById(R.id.tvRank)
+        val tvName: TextView = itemView.findViewById(R.id.tvName)
+        val tvPoints: TextView = itemView.findViewById(R.id.tvPoints)
     }
 
-    override fun onBindViewHolder(holder: Holder, position: Int) {
-        holder.bind(items[position], position)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LeagueViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_recycler_league, parent, false)
+        return LeagueViewHolder(view)
     }
 
-    override fun getItemCount() = items.size
+    override fun onBindViewHolder(holder: LeagueViewHolder, position: Int) {
+        val user = userList[position]
+        holder.tvRank.text = user.rank
+        holder.tvName.text = user.name
+        holder.tvPoints.text = user.points
+    }
 
-    class Holder(private val binding: ItemRecyclerLeagueBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-
-        fun bind(item: LeagueItem, position: Int) {
-            binding.tvName.text = item.name
-            binding.tvTimes.text = item.rank
-            binding.tvPoints.text = item.point
-            binding.profileImage.setImageResource(R.drawable.ic_profile_placeholder)
-
-            // 순위에 따라 배경색 변경
-            val backgroundColor = when (position) {
-                0 -> ContextCompat.getColor(binding.root.context, R.color.gold)
-                1 -> ContextCompat.getColor(binding.root.context, R.color.silver)
-                2 -> ContextCompat.getColor(binding.root.context, R.color.bronze)
-                else -> ContextCompat.getColor(binding.root.context, R.color.light_gray)
-            }
-            binding.root.setBackgroundColor(backgroundColor)
-        }
+    override fun getItemCount(): Int {
+        return userList.size
     }
 }

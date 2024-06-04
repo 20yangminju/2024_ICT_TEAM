@@ -1,16 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".League_Fragment">
+    tools:context=".LeagueFragment"
+    android:background="@color/orange_accent">
 
     <!-- 트로피 이미지 -->
     <ImageView
         android:id="@+id/ranking_trophy_image"
         android:layout_width="332dp"
-        android:layout_height="290dp"
+        android:layout_height="260dp"
         android:layout_gravity="center"
         android:layout_marginTop="16dp"
         android:adjustViewBounds="true"
@@ -19,41 +19,39 @@
         android:src="@drawable/ranking_trophy" />
 
     <!-- 상단 배너 -->
+
+    <!-- 리사이클러뷰 -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:orientation="vertical"
-        android:padding="16dp"
-        android:gravity="center">
+        android:padding="32dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="WIN $10!"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:textColor="@android:color/black" />
+            android:text="다른 사용자들의 랭킹을 확인해보세요"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Today's highest token balance wins!"
-            android:textSize="14sp"
-            android:textColor="@android:color/black" />
+            android:gravity="center"
+            android:text="계단을 오르면 알고리즘을 통해 \n일일 운동량이 계산되어 순위가 매겨집니다."
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Contest ends in: 12h 18m"
-            android:textSize="12sp"
-            android:textColor="@android:color/black" />
     </LinearLayout>
 
-    <!-- 리사이클러뷰 -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_league"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@android:color/white"
         android:padding="8dp"
         tools:listitem="@layout/item_recycler_league" />
 

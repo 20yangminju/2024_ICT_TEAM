@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.a2024_ict_team.databinding.FragmentLeagueBinding
 
-class League_Fragment : Fragment() {
+class LeagueFragment : Fragment() {
     private lateinit var leagueAdapter: LeagueAdapter
     private lateinit var binding: FragmentLeagueBinding
 
@@ -17,9 +17,9 @@ class League_Fragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         items.add(LeagueItem("이유경", "1280 K", "1"))
-        items.add(LeagueItem("양민주", "1000 K", "2"))
+        items.add(LeagueItem("양민주", "1192 K", "2"))
         items.add(LeagueItem("정윤석", "980 K", "3"))
-        items.add(LeagueItem("정혜윤", "300 K", "4"))
+        items.add(LeagueItem("정혜윤", "800 K", "4"))
         items.add(LeagueItem("김세훈", "500 K", "5"))
     }
 
@@ -29,7 +29,7 @@ class League_Fragment : Fragment() {
     ): View? {
         binding = FragmentLeagueBinding.inflate(inflater, container, false)
         binding.rvLeague.layoutManager = LinearLayoutManager(context)
-        leagueAdapter = LeagueAdapter(items, this)
+        leagueAdapter = LeagueAdapter(items)
         binding.rvLeague.adapter = leagueAdapter
 
         return binding.root
