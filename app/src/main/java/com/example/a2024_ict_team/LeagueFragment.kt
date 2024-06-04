@@ -17,7 +17,7 @@ class LeagueFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         items.add(LeagueItem("이유경", "1280 K", "1"))
-        items.add(LeagueItem("양민주", "1000 K", "2"))
+        items.add(LeagueItem("양민주", "1192 K", "2"))
         items.add(LeagueItem("정윤석", "980 K", "3"))
         items.add(LeagueItem("정혜윤", "800 K", "4"))
         items.add(LeagueItem("김세훈", "500 K", "5"))
