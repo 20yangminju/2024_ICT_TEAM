@@ -1,18 +1,24 @@
 package com.example.a2024_ict_team
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.a2024_ict_team.databinding.FragmentRecordBinding
+import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.firebase.database.*
+import com.example.a2024_ict_team.databinding.FragmentRecordBinding
+import com.google.firebase.database.DatabaseReference
+import android.graphics.Typeface
+
+
 class RecordFragment : Fragment() {
     private lateinit var binding: FragmentRecordBinding
     private lateinit var database: DatabaseReference
 
     private val userId = "ymj10003"
+    private lateinit var dayTextViews: Array<TextView>
+    private var selectedDayIndex = 4 // Initial selected day is Friday (index 4)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +31,11 @@ class RecordFragment : Fragment() {
         binding = FragmentRecordBinding.inflate(inflater, container, false)
 
         // Setting up the RecyclerView with dummy data
+
+        setupDayTextViews()
+        setupButtonListeners()
         setupRecyclerView()
+
         return binding.root
     }
 
@@ -38,5 +48,48 @@ class RecordFragment : Fragment() {
         val workoutAdapter = WorkoutRecordAdapter(workoutList)
         //binding.rvWorkoutRecords.layoutManager = LinearLayoutManager(requireContext())
         //binding.rvWorkoutRecords.adapter = workoutAdapter
+    }
+
+    private fun setupDayTextViews() {
+        dayTextViews = arrayOf(
+            binding.textMon,
+            binding.textTue,
+            binding.textWed,
+            binding.textThu,
+            binding.textFri,
+            binding.textSat,
+            binding.textSun
+        )
+
+        updateSelectedDay()
+    }
+
+    private fun setupButtonListeners() {
+        binding.buttonPrev.setOnClickListener {
+            if (selectedDayIndex > 0) {
+                selectedDayIndex--
+                updateSelectedDay()
+            }
+        }
+
+        binding.buttonNext.setOnClickListener {
+            if (selectedDayIndex < dayTextViews.size - 1) {
+                selectedDayIndex++
+                updateSelectedDay()
+            }
+        }
+    }
+
+    private fun updateSelectedDay() {
+        for (i in dayTextViews.indices) {
+            val textView = dayTextViews[i]
+            if (i == selectedDayIndex) {
+                textView.setBackgroundResource(R.drawable.background_selected_day)
+                textView.setTypeface(null, Typeface.BOLD)
+            } else {
+                textView.setBackgroundResource(0)
+                textView.setTypeface(null, Typeface.NORMAL)
+            }
+        }
     }
 }

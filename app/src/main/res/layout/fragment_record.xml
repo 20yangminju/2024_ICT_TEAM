@@ -30,102 +30,111 @@
 
         <LinearLayout
             android:id="@+id/llWeekDays"
-            android:layout_width="match_parent"
+            android:layout_width="369dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
             android:layout_marginTop="32dp"
+            android:gravity="center"
+            android:orientation="horizontal"
             android:paddingStart="8dp"
             android:paddingEnd="8dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <Button
+                android:id="@+id/buttonPrev"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="4dp"
+                android:gravity="center"
                 android:text="◀"
-                android:gravity="center"
-                android:layout_margin="4dp"
-                android:textSize="16sp"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:textSize="16sp" />
 
             <TextView
+                android:id="@+id/textMon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:gravity="center"
                 android:text="Mon\n3"
-                android:gravity="center"
-                android:layout_margin="4dp"
+                android:textColor="@color/black"
                 android:textSize="16sp"
-                android:textStyle="normal"
-                android:textColor="@color/black" />
+                android:textStyle="normal" />
 
             <TextView
+                android:id="@+id/textTue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:gravity="center"
                 android:text="Tue\n4"
-                android:gravity="center"
-                android:layout_margin="4dp"
+                android:textColor="@color/black"
                 android:textSize="16sp"
-                android:textStyle="normal"
-                android:textColor="@color/black" />
+                android:textStyle="normal" />
 
             <TextView
+                android:id="@+id/textWed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:gravity="center"
                 android:text="Wed\n5"
-                android:gravity="center"
-                android:layout_margin="4dp"
+                android:textColor="@color/black"
                 android:textSize="16sp"
-                android:textStyle="normal"
-                android:textColor="@color/black" />
+                android:textStyle="normal" />
 
             <TextView
+                android:id="@+id/textThu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:gravity="center"
                 android:text="Thu\n6"
-                android:gravity="center"
-                android:layout_margin="4dp"
+                android:textColor="@color/black"
                 android:textSize="16sp"
-                android:textStyle="normal"
-                android:textColor="@color/black" />
+                android:textStyle="normal" />
 
             <TextView
+                android:id="@+id/textFri"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Fri\n7"
-                android:gravity="center"
+                android:layout_margin="4dp"
                 android:background="@drawable/background_selected_day"
-                android:layout_margin="4dp"
+                android:gravity="center"
+                android:text="Fri\n7"
+                android:textColor="@color/black"
                 android:textSize="16sp"
-                android:textStyle="bold"
-                android:textColor="@color/black" />
+                android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/textSat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:gravity="center"
                 android:text="Sat\n8"
-                android:gravity="center"
-                android:layout_margin="4dp"
+                android:textColor="@color/black"
                 android:textSize="16sp"
-                android:textStyle="normal"
-                android:textColor="@color/black" />
+                android:textStyle="normal" />
 
             <TextView
+                android:id="@+id/textSun"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:gravity="center"
                 android:text="Sun\n9"
-                android:gravity="center"
-                android:layout_margin="4dp"
+                android:textColor="@color/black"
                 android:textSize="16sp"
-                android:textStyle="normal"
-                android:textColor="@color/black" />
+                android:textStyle="normal" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="▶"
-                android:gravity="center"
+            <Button
+                android:id="@+id/buttonNext"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_margin="4dp"
-                android:textSize="16sp"
-                android:textColor="@color/black" />
+                android:gravity="center"
+                android:text="▶"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
         </LinearLayout>
 
     </LinearLayout>
@@ -235,112 +244,23 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="08:54 AM ~ 08:58 AM (4분 32초)"
+                            android:text="오전 8:54 ~ 오전 8:58"
                             android:textColor="@android:color/black"
-                            android:textSize="16sp" />
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="4분 32초"
+                            android:textColor="@android:color/black"
+                            android:textSize="14sp" />
                     </LinearLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    android:background="@drawable/background_card"
-                    android:padding="16dp">
+                <!-- Repeat similar ConstraintLayouts for more records -->
 
-                    <View
-                        android:id="@+id/view2"
-                        android:layout_width="8dp"
-                        android:layout_height="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:background="@drawable/background_circle"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/card2"
-                        app:layout_constraintVertical_bias="0.5" />
-
-                    <LinearLayout
-                        android:id="@+id/card2"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginStart="16dp"
-                        app:layout_constraintStart_toEndOf="@id/view2"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="한국항공대학교 학생회관 정문 계단"
-                            android:textColor="@android:color/black"
-                            android:textSize="16sp"
-                            android:textStyle="bold"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="09:10 AM ~ 09:12 AM (2분 01초)"
-                            android:textColor="@android:color/black"
-                            android:textSize="16sp" />
-                    </LinearLayout>
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    android:background="@drawable/background_card"
-                    android:padding="16dp">
-
-                    <View
-                        android:id="@+id/view3"
-                        android:layout_width="8dp"
-                        android:layout_height="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:background="@drawable/background_circle"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/card3"
-                        app:layout_constraintVertical_bias="0.5" />
-
-                    <LinearLayout
-                        android:id="@+id/card3"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginStart="16dp"
-                        app:layout_constraintStart_toEndOf="@id/view3"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="한국항공대역 1번 계단"
-                            android:textColor="@android:color/black"
-                            android:textSize="16sp"
-                            android:textStyle="bold"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="15:39 PM ~ 15:42 PM (3분 49초)"
-                            android:textColor="@android:color/black"
-                            android:textSize="16sp" />
-                    </LinearLayout>
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
             </LinearLayout>
-
         </LinearLayout>
-
     </ScrollView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
