@@ -15,6 +15,7 @@ import java.util.Calendar
 
 class RecordFragment : Fragment() {
     private lateinit var binding: FragmentRecordBinding
+    private lateinit var recordAdapter: WorkoutRecordAdapter
     private lateinit var database: DatabaseReference
 
     val cal: Calendar = Calendar.getInstance()
@@ -49,8 +50,10 @@ class RecordFragment : Fragment() {
             WorkoutRecord("2024년 06월 07일", "항공대입구역 1번 계단", "15:39 PM ~ 15:42 PM", "3분 49초")
         )
         val workoutAdapter = WorkoutRecordAdapter(workoutList)
-        //binding.rvWorkoutRecords.layoutManager = LinearLayoutManager(requireContext())
-        //binding.rvWorkoutRecords.adapter = workoutAdapter
+        binding.rvRecord.layoutManager = LinearLayoutManager(context)
+        recordAdapter = WorkoutRecordAdapter(workoutList)
+        binding.rvRecord.adapter = recordAdapter
+
     }
 
     private fun setupDayTextViews() {

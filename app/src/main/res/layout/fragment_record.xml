@@ -233,27 +233,14 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent">
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="한국항공대역 1번 계단"
-                            android:textColor="@android:color/black"
-                            android:textSize="16sp"
-                            android:textStyle="bold"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="오전 8:54 ~ 오전 8:58"
-                            android:textColor="@android:color/black"
-                            android:textSize="14sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="4분 32초"
-                            android:textColor="@android:color/black"
-                            android:textSize="14sp" />
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rv_record"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:background="@android:color/white"
+                            android:padding="8dp"
+                            tools:listitem="@layout/item_workout_record" />
                     </LinearLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
