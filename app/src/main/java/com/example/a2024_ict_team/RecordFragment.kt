@@ -83,12 +83,11 @@ class RecordFragment : Fragment() {
         }
 
         if(temp == emptyList<WorkoutRecord>()){
-            binding.dailycheck.visibility = View.INVISIBLE
-            binding.recordlist.visibility = View.INVISIBLE
+            binding.dailycheck.visibility = View.GONE
+
         }
         else {
             binding.dailycheck.visibility = View.VISIBLE
-            binding.recordlist.visibility = View.VISIBLE
         }
         val workoutList = temp.toList()
 

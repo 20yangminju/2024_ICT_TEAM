@@ -203,37 +203,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/recordlist"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    android:background="@drawable/background_card"
-                    android:padding="16dp">
-
-                    <View
-                        android:id="@+id/view1"
-                        android:layout_width="8dp"
-                        android:layout_height="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:background="@drawable/background_circle"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/card1"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.5" />
-
-                    <LinearLayout
+                <LinearLayout
                         android:id="@+id/card1"
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
                         android:orientation="vertical"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginStart="16dp"
                         app:layout_constraintStart_toEndOf="@id/view1"
-                        app:layout_constraintTop_toTopOf="parent">
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent">
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/rv_record"
@@ -244,9 +223,6 @@
                             android:padding="8dp"
                             tools:listitem="@layout/item_workout_record" />
                     </LinearLayout>
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
                 <!-- Repeat similar ConstraintLayouts for more records -->
 
             </LinearLayout>
