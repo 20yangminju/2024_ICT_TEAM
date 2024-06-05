@@ -44,12 +44,44 @@ class RecordFragment : Fragment() {
     }
 
     private fun setupRecyclerView() {
-        val workoutList = listOf(
-            WorkoutRecord("2024년 06월 07일", "항공대입구역 1번 계단", "08:54 AM ~ 08:58 AM", "4분 32초"),
-            WorkoutRecord("2024년 06월 07일", "한국항공대학교 학생회관 정문 계단", "09:10 AM ~ 09:12 AM", "2분 01초"),
-            WorkoutRecord("2024년 06월 07일", "항공대입구역 1번 계단", "15:39 PM ~ 15:42 PM", "3분 49초")
-        )
-        val workoutAdapter = WorkoutRecordAdapter(workoutList)
+
+        val temp  = mutableListOf<WorkoutRecord>()
+        if(selectedDayIndex == 0) {
+            temp.add(WorkoutRecord("2024년 06월 03일", "항공대입구역 1번 계단", "08:50 AM ~ 08:54 AM", "3분 48초"))
+            temp.add(WorkoutRecord("2024년 06월 03일", "항공대 전자관 1번 계단", "08:57 AM ~ 09:00 AM", "2분 12초"))
+        }
+        else if (selectedDayIndex == 1){
+            temp.add(WorkoutRecord("2024년 06월 04일", "항공대입구역 1번 계단", "11:54 AM ~ 11 : 59 AM", "4분 32초"))
+            temp.add(WorkoutRecord("2024년 06월 04일", "항공대 과학관 1번 계단", "12:00 AM ~ 12:02 AM", "1분 30초"))
+            temp.add(WorkoutRecord("2024년 06월 04일", "항공대 강의동 3번 계단", "02:50 PM ~ 02:56 PM", "5분 27초"))
+        }
+        else if (selectedDayIndex == 2) {
+            temp.add(WorkoutRecord("2024년 06월 05일", "항공대입구역 1번 계단", "09:54 AM ~ 09:58 AM", "4분 32초"))
+            temp.add(WorkoutRecord("2024년 06월 05일", "항공대 학생회관 2번 계단", "10:05 AM ~ 10:08 AM", "2분 56초"))
+            temp.add(WorkoutRecord("2024년 06월 05일", "항공대 도서관 1번 계단", "13:26 PM ~ 13:28 AM", "1분 23초"))
+            temp.add(WorkoutRecord("2024년 06월 05일", "항공대 강의동 1번 계단", "15:22 PM ~ 15:25 AM", "2분 18초"))
+        }
+        else if (selectedDayIndex == 3){
+            temp.add(WorkoutRecord("2024년 06월 06일", "항공대입구역 1번 계단", "08:54 AM ~ 08:58 AM", "3분 56초"))
+            temp.add(WorkoutRecord("2024년 06월 06일", "항공대 과학관 1번 계단", "09:00 AM ~ 09:02 AM", "1분 8초"))
+        }
+        else if (selectedDayIndex == 4){
+            temp.add(WorkoutRecord("2024년 06월 07일", "항공대입구역 1번 계단", "01:40 PM ~ 01:45 PM", "5분 12초"))
+            temp.add(WorkoutRecord("2024년 06월 07일", "항공대 과학관 3번 계단", "01:50 PM ~ 01:54 AM", "3분 46초"))
+            temp.add(WorkoutRecord("2024년 06월 07일", "항공대 강의동 2번 계단", "03:54 AM ~ 03:56 AM", "2분 3초"))
+        }
+        else if (selectedDayIndex == 5){
+        }
+        else if (selectedDayIndex == 6){
+        }
+
+        if(temp == emptyList<WorkoutRecord>()){
+            binding.dailycheck.visibility = View.GONE
+        }
+        else
+            binding.dailycheck.visibility = View.VISIBLE
+        val workoutList = temp.toList()
+
         binding.rvRecord.layoutManager = LinearLayoutManager(context)
         recordAdapter = WorkoutRecordAdapter(workoutList)
         binding.rvRecord.adapter = recordAdapter
@@ -75,6 +107,7 @@ class RecordFragment : Fragment() {
             if (selectedDayIndex > 0) {
                 selectedDayIndex--
                 updateSelectedDay()
+                setupRecyclerView()
             }
         }
 
@@ -82,6 +115,7 @@ class RecordFragment : Fragment() {
             if (selectedDayIndex < dayTextViews.size - 1) {
                 selectedDayIndex++
                 updateSelectedDay()
+                setupRecyclerView()
             }
         }
     }

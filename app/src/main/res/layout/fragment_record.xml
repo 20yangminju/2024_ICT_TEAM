@@ -158,20 +158,21 @@
             android:padding="16dp">
 
             <LinearLayout
+                android:id="@+id/dailycheck"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
                 android:background="@drawable/background_goal_achieved"
-                android:layout_marginTop="16dp">
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/tvGoalAchieved"
                     android:layout_width="260sp"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:padding="16dp"
                     android:text="일일 목표를 달성했습니다"
-                    android:gravity="center"
                     android:textColor="@color/orange_accent"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -180,9 +181,9 @@
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_marginStart="0dp"
-                    android:src="@drawable/ic_check_circle"
                     android:gravity="center"
                     android:padding="10dp"
+                    android:src="@drawable/ic_check_circle"
                     android:tint="@color/orange_accent" />
             </LinearLayout>
 
