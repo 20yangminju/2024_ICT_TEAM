@@ -10,15 +10,18 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.a2024_ict_team.databinding.FragmentRecordBinding
 import com.google.firebase.database.DatabaseReference
 import android.graphics.Typeface
+import java.util.Calendar
 
 
 class RecordFragment : Fragment() {
     private lateinit var binding: FragmentRecordBinding
     private lateinit var database: DatabaseReference
 
+    val cal: Calendar = Calendar.getInstance()
     private val userId = "ymj10003"
     private lateinit var dayTextViews: Array<TextView>
-    private var selectedDayIndex = 4 // Initial selected day is Friday (index 4)
+    val nWeek: Int = cal.get(Calendar.DAY_OF_WEEK) -1
+    private var selectedDayIndex = nWeek // Initial selected day is Friday (index 4)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
