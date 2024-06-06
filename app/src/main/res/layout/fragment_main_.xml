@@ -55,12 +55,12 @@
                     android:id="@+id/progress_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="1192K"
-                    android:textSize="48sp"
-                    android:textColor="@color/text_primary"
-                    android:textStyle="bold"
                     android:layout_centerInParent="true"
-                    android:gravity="center" />
+                    android:gravity="center"
+                    android:text="1192K"
+                    android:textColor="@color/text_primary"
+                    android:textSize="48sp"
+                    android:textStyle="bold" />
             </RelativeLayout>
             <TextView
                 android:id="@+id/tvtip"

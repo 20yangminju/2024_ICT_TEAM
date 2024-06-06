@@ -22,9 +22,9 @@ class LeagueAdapter(private val userList: List<LeagueItem>) :
 
     override fun onBindViewHolder(holder: LeagueViewHolder, position: Int) {
         val user = userList[position]
-        holder.tvRank.text = user.rank
+        holder.tvRank.text = user.rank.toString()
         holder.tvName.text = user.name
-        holder.tvPoints.text = user.points
+        holder.tvPoints.text = user.points.toString()
     }
 
     override fun getItemCount(): Int {

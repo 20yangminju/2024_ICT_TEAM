@@ -7,20 +7,21 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.a2024_ict_team.databinding.FragmentLeagueBinding
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class LeagueFragment : Fragment() {
     private lateinit var leagueAdapter: LeagueAdapter
     private lateinit var binding: FragmentLeagueBinding
+    private lateinit var database: DatabaseReference
 
-    private var items = ArrayList<LeagueItem>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        items.add(LeagueItem("이유경", "1280 K", "1"))
-        items.add(LeagueItem("양민주", "1192 K", "2"))
-        items.add(LeagueItem("정윤석", "980 K", "3"))
-        items.add(LeagueItem("정혜윤", "800 K", "4"))
-        items.add(LeagueItem("김세훈", "500 K", "5"))
+
     }
 
     override fun onCreateView(
@@ -28,10 +29,55 @@ class LeagueFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentLeagueBinding.inflate(inflater, container, false)
-        binding.rvLeague.layoutManager = LinearLayoutManager(context)
-        leagueAdapter = LeagueAdapter(items)
-        binding.rvLeague.adapter = leagueAdapter
+
+        database = FirebaseDatabase.getInstance().getReference("user")
+
+        setupRecyclerView()
+        league_listupdate()
+
+        database.addValueEventListener(object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                league_listupdate()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
 
         return binding.root
+    }
+    fun setupRecyclerView(){
+        binding.rvLeague.layoutManager = LinearLayoutManager(context)
+        leagueAdapter = LeagueAdapter(emptyList())
+        binding.rvLeague.adapter = leagueAdapter
+    }
+
+    fun league_listupdate(){
+        var temp = mutableListOf<LeagueItem>()
+        database.addListenerForSingleValueEvent(object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (ds in snapshot.children){
+                    val name = ds.key.toString()
+                    val point = ds.child("point").value as Long
+
+                    val item = LeagueItem(name.toString(), point.toString().toInt(), 0)
+
+                    temp.add(item)
+                }
+                temp.sortByDescending { it.points }
+                for(index in temp.indices){
+                    temp[index].rank = index + 1
+                }
+
+                binding.rvLeague.adapter = LeagueAdapter(temp.toList())
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
+
+
     }
 }

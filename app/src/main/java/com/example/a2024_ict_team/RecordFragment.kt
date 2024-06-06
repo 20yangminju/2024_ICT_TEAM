@@ -45,6 +45,16 @@ class RecordFragment : Fragment() {
         setupButtonListeners()
         setupRecyclerView()
 
+        database.addValueEventListener(object :ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                setupRecyclerView()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        })
+
         return binding.root
     }
 

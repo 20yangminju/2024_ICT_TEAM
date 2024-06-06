@@ -1,5 +1,6 @@
 package com.example.a2024_ict_team
 
+import android.content.Context
 import android.nfc.NfcAdapter
 import android.nfc.Tag
 import android.nfc.tech.Ndef
@@ -9,6 +10,7 @@ import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CalendarView.OnDateChangeListener
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -40,8 +42,6 @@ class Timer_Fragment : Fragment() {
 
 
 
-
-
     private val runnable = object : Runnable {
         override fun run() {
             secondsElapsed++
@@ -62,7 +62,7 @@ class Timer_Fragment : Fragment() {
 
         firbaseDatabase = FirebaseDatabase.getInstance()
         databasereference = firbaseDatabase.getReference("user")
-
+        updateWorknum()
 
 
         val nfcAdapter = NfcAdapter.getDefaultAdapter(activity)
@@ -130,6 +130,7 @@ class Timer_Fragment : Fragment() {
             nfcTagMessageTextView.text = "계단 벽면의 NFC를 태깅하세요"
             exerciseMessageTextView.visibility = View.INVISIBLE
             updatefirebase()
+            updateWorknum()
 
 
         }
@@ -146,16 +147,7 @@ class Timer_Fragment : Fragment() {
         var end_time = workend.toLocalTime().toString()
         val dayOfWeek = workend.dayOfWeek
 
-        databasereference.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                worknum = snapshot.child(userID).child("worknum").value as Long
-            }
 
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-        }
-        )
 
         var worknum_int = worknum.toString().toInt() + 1
 
@@ -171,4 +163,20 @@ class Timer_Fragment : Fragment() {
         databasereference.child(userID).child("recentwork").child(Date).child("timerange").setValue(timerange)
         databasereference.child(userID).child("recentwork").child(Date).child("dayofweek").setValue(dayOfWeek)
     }
+
+    private fun updateWorknum(){
+        databasereference.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                worknum = snapshot.child(userID).child("worknum").value as Long
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        }
+        )
+
+    }
+
+
 }
