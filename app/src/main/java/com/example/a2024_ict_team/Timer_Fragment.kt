@@ -63,15 +63,6 @@ class Timer_Fragment : Fragment() {
         firbaseDatabase = FirebaseDatabase.getInstance()
         databasereference = firbaseDatabase.getReference("user")
 
-        databasereference.addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                worknum = snapshot.child(userID).child("worknum").value as Long
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
-            }
-        })
 
 
         val nfcAdapter = NfcAdapter.getDefaultAdapter(activity)
@@ -153,6 +144,18 @@ class Timer_Fragment : Fragment() {
         val simpleDate = workend.toLocalDate().toString()
         var start_time = workstart.toLocalTime().toString()
         var end_time = workend.toLocalTime().toString()
+        val dayOfWeek = workend.dayOfWeek
+
+        databasereference.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                worknum = snapshot.child(userID).child("worknum").value as Long
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+        }
+        )
 
         var worknum_int = worknum.toString().toInt() + 1
 
@@ -166,5 +169,6 @@ class Timer_Fragment : Fragment() {
         databasereference.child(userID).child("recentwork").child(Date).child("duration").setValue(secondsElapsed)
         databasereference.child(userID).child("recentwork").child(Date).child("Date").setValue(simpleDate)
         databasereference.child(userID).child("recentwork").child(Date).child("timerange").setValue(timerange)
+        databasereference.child(userID).child("recentwork").child(Date).child("dayofweek").setValue(dayOfWeek)
     }
 }

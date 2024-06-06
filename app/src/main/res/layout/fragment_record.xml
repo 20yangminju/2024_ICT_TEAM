@@ -203,28 +203,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-                <LinearLayout
-                        android:id="@+id/card1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_marginStart="16dp"
-                        app:layout_constraintStart_toEndOf="@id/view1"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent">
 
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/rv_record"
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="1"
-                            android:background="@android:color/white"
-                            android:padding="8dp"
-                            tools:listitem="@layout/item_workout_record" />
-                    </LinearLayout>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_record"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@android:color/white"
+                    android:padding="8dp"
+                    tools:listitem="@layout/item_workout_record" />
+
                 <!-- Repeat similar ConstraintLayouts for more records -->
-
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

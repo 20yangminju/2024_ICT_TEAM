@@ -10,6 +10,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.a2024_ict_team.databinding.FragmentRecordBinding
 import com.google.firebase.database.DatabaseReference
 import android.graphics.Typeface
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import java.util.Calendar
 
 
@@ -35,6 +39,7 @@ class RecordFragment : Fragment() {
         binding = FragmentRecordBinding.inflate(inflater, container, false)
 
         // Setting up the RecyclerView with dummy data
+        database = FirebaseDatabase.getInstance().getReference("user")
 
         setupDayTextViews()
         setupButtonListeners()
@@ -47,38 +52,180 @@ class RecordFragment : Fragment() {
 
         val temp  = mutableListOf<WorkoutRecord>()
         if(selectedDayIndex == 0) {
-            temp.add(WorkoutRecord("2024년 06월 03일", "항공대입구역 1번 계단", "08:50 AM ~ 08:54 AM", "3분 48초"))
-            temp.add(WorkoutRecord("2024년 06월 03일", "항공대 전자관 1번 계단", "08:57 AM ~ 09:00 AM", "2분 12초"))
+            database.child(userId).child("recentwork").addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    for (ds in snapshot.children){
+                        if (ds.child("dayofweek").value as String == "MONDAY"){
+                            val date = ds.child("Date").value as Any
+                            val duration = ds.child("duration").value as Any
+                            val location = ds.child("location").value as Any
+                            val timerange = ds.child("timerange").value as Any
+
+                            val duration_int = duration.toString().toInt()
+                            val duration_string = "${duration_int / 60}분 ${duration_int % 60}초"
+                            val work = WorkoutRecord(date.toString(), location.toString(),timerange.toString(), duration_string)
+                            temp.add(work)
+                            binding.rvRecord.adapter = WorkoutRecordAdapter (temp.toList())
+                        }
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+            })
+
             binding.tvDate.text = "2024년 6월 3일 월요일"
         }
         else if (selectedDayIndex == 1){
-            temp.add(WorkoutRecord("2024년 06월 04일", "항공대입구역 1번 계단", "11:54 AM ~ 11 : 59 AM", "4분 32초"))
-            temp.add(WorkoutRecord("2024년 06월 04일", "항공대 과학관 1번 계단", "12:00 AM ~ 12:02 AM", "1분 30초"))
-            temp.add(WorkoutRecord("2024년 06월 04일", "항공대 강의동 3번 계단", "02:50 PM ~ 02:56 PM", "5분 27초"))
+            database.child(userId).child("recentwork").addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    for (ds in snapshot.children){
+                        if (ds.child("dayofweek").value as String == "TUESDAY"){
+                            val date = ds.child("Date").value as Any
+                            val duration = ds.child("duration").value as Any
+                            val location = ds.child("location").value as Any
+                            val timerange = ds.child("timerange").value as Any
+
+                            val duration_int = duration.toString().toInt()
+                            val duration_string = "${duration_int / 60}분 ${duration_int % 60}초"
+                            val work = WorkoutRecord(date.toString(), location.toString(),timerange.toString(), duration_string)
+                            temp.add(work)
+                            binding.rvRecord.adapter = WorkoutRecordAdapter (temp.toList())
+                        }
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+            })
             binding.tvDate.text = "2024년 6월 4일 화요일"
         }
         else if (selectedDayIndex == 2) {
-            temp.add(WorkoutRecord("2024년 06월 05일", "항공대입구역 1번 계단", "09:54 AM ~ 09:58 AM", "4분 32초"))
-            temp.add(WorkoutRecord("2024년 06월 05일", "항공대 학생회관 2번 계단", "10:05 AM ~ 10:08 AM", "2분 56초"))
-            temp.add(WorkoutRecord("2024년 06월 05일", "항공대 도서관 1번 계단", "13:26 PM ~ 13:28 AM", "1분 23초"))
-            temp.add(WorkoutRecord("2024년 06월 05일", "항공대 강의동 1번 계단", "15:22 PM ~ 15:25 AM", "2분 18초"))
+            database.child(userId).child("recentwork").addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    for (ds in snapshot.children){
+                        if (ds.child("dayofweek").value as String == "WEDNESDAY"){
+                            val date = ds.child("Date").value as Any
+                            val duration = ds.child("duration").value as Any
+                            val location = ds.child("location").value as Any
+                            val timerange = ds.child("timerange").value as Any
+
+                            val duration_int = duration.toString().toInt()
+                            val duration_string = "${duration_int / 60}분 ${duration_int % 60}초"
+                            val work = WorkoutRecord(date.toString(), location.toString(),timerange.toString(), duration_string)
+                            temp.add(work)
+                            binding.rvRecord.adapter = WorkoutRecordAdapter (temp.toList())
+                        }
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+            })
             binding.tvDate.text = "2024년 6월 5일 수요일"
         }
         else if (selectedDayIndex == 3){
-            temp.add(WorkoutRecord("2024년 06월 06일", "항공대입구역 1번 계단", "08:54 AM ~ 08:58 AM", "3분 56초"))
-            temp.add(WorkoutRecord("2024년 06월 06일", "항공대 과학관 1번 계단", "09:00 AM ~ 09:02 AM", "1분 8초"))
+            database.child(userId).child("recentwork").addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    for (ds in snapshot.children){
+                        if (ds.child("dayofweek").value as String == "THURSDAY"){
+                            val date = ds.child("Date").value as Any
+                            val duration = ds.child("duration").value as Any
+                            val location = ds.child("location").value as Any
+                            val timerange = ds.child("timerange").value as Any
+
+                            val duration_int = duration.toString().toInt()
+                            val duration_string = "${duration_int / 60}분 ${duration_int % 60}초"
+                            val work = WorkoutRecord(date.toString(), location.toString(),timerange.toString(), duration_string)
+                            temp.add(work)
+                            binding.rvRecord.adapter = WorkoutRecordAdapter (temp.toList())
+                        }
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+            })
+
             binding.tvDate.text = "2024년 6월 6일 목요일"
         }
         else if (selectedDayIndex == 4){
-            temp.add(WorkoutRecord("2024년 06월 07일", "항공대입구역 1번 계단", "01:40 PM ~ 01:45 PM", "5분 12초"))
-            temp.add(WorkoutRecord("2024년 06월 07일", "항공대 과학관 3번 계단", "01:50 PM ~ 01:54 AM", "3분 46초"))
-            temp.add(WorkoutRecord("2024년 06월 07일", "항공대 강의동 2번 계단", "03:54 AM ~ 03:56 AM", "2분 3초"))
+            database.child(userId).child("recentwork").addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    for (ds in snapshot.children){
+                        if (ds.child("dayofweek").value as String == "FRIDAY"){
+                            val date = ds.child("Date").value as Any
+                            val duration = ds.child("duration").value as Any
+                            val location = ds.child("location").value as Any
+                            val timerange = ds.child("timerange").value as Any
+
+                            val duration_int = duration.toString().toInt()
+                            val duration_string = "${duration_int / 60}분 ${duration_int % 60}초"
+                            val work = WorkoutRecord(date.toString(), location.toString(),timerange.toString(), duration_string)
+                            temp.add(work)
+                            binding.rvRecord.adapter = WorkoutRecordAdapter (temp.toList())
+                        }
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+            })
             binding.tvDate.text = "2024년 6월 7일 금요일"
         }
         else if (selectedDayIndex == 5){
+            database.child(userId).child("recentwork").addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    for (ds in snapshot.children){
+                        if (ds.child("dayofweek").value as String == "SATURDAY"){
+                            val date = ds.child("Date").value as Any
+                            val duration = ds.child("duration").value as Any
+                            val location = ds.child("location").value as Any
+                            val timerange = ds.child("timerange").value as Any
+
+                            val duration_int = duration.toString().toInt()
+                            val duration_string = "${duration_int / 60}분 ${duration_int % 60}초"
+                            val work = WorkoutRecord(date.toString(), location.toString(),timerange.toString(), duration_string)
+                            temp.add(work)
+                            binding.rvRecord.adapter = WorkoutRecordAdapter (temp.toList())
+                        }
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+            })
             binding.tvDate.text = "2024년 6월 8일 토요일"
         }
         else if (selectedDayIndex == 6){
+            database.child(userId).child("recentwork").addListenerForSingleValueEvent(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    for (ds in snapshot.children){
+                        if (ds.child("dayofweek").value as String == "SUNDAY"){
+                            val date = ds.child("Date").value as Any
+                            val duration = ds.child("duration").value as Any
+                            val location = ds.child("location").value as Any
+                            val timerange = ds.child("timerange").value as Any
+
+                            val duration_int = duration.toString().toInt()
+                            val duration_string = "${duration_int / 60}분 ${duration_int % 60}초"
+                            val work = WorkoutRecord(date.toString(), location.toString(),timerange.toString(), duration_string)
+                            temp.add(work)
+                            binding.rvRecord.adapter = WorkoutRecordAdapter (temp.toList())
+                        }
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+            })
             binding.tvDate.text = "2024년 6월 9일 일요일"
         }
 
