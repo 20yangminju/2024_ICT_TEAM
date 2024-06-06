@@ -14,6 +14,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import java.nio.charset.Charset
+import java.time.LocalDateTime
 
 class Timer_Fragment : Fragment() {
 
@@ -24,6 +25,11 @@ class Timer_Fragment : Fragment() {
     private var secondsElapsed = 0
     private val handler = Handler(Looper.getMainLooper())
     private var isTimerRunning = false
+    private lateinit var workstart : LocalDateTime
+    private lateinit var workend : LocalDateTime
+    private lateinit var location : String
+
+
 
     private val runnable = object : Runnable {
         override fun run() {
@@ -42,6 +48,7 @@ class Timer_Fragment : Fragment() {
         nfcDataTextView = view.findViewById(R.id.nfcDataTextView)
         exerciseMessageTextView = view.findViewById(R.id.exerciseMessageTextView)
         nfcTagMessageTextView = view.findViewById(R.id.nfcTagMessageTextView)
+
 
         val nfcAdapter = NfcAdapter.getDefaultAdapter(activity)
         if (nfcAdapter == null) {
@@ -62,11 +69,13 @@ class Timer_Fragment : Fragment() {
                 ndef.close()
                 if (ndefMessage != null) {
                     val text = ndefMessage.records[0].payload.toString(Charset.forName("UTF-8"))
+                    var text2 = ndefMessage.records[1].payload.toString(Charset.forName("UTF-8"))
+                    location = text2.replace("[a-zA-Z]".toRegex(), "")
                     activity?.runOnUiThread {
                         nfcDataTextView.text = "NFC Data: $text"
                         if (text.isNotEmpty()) {
                             val secondLastChar = if (text.length > 1) text[text.length - 2] else '1'
-                            exerciseMessageTextView.text = "\n한국항공대역의 ${secondLastChar}번 출구 방향 계단을 오르고 있어요 🔥\n\n계단 오르기 완료 후\n계단 벽면의 NFC에 태깅을 하면 운동 측정이 완료됩니다."
+                            exerciseMessageTextView.text = "\n${location} ${secondLastChar}번 출구 방향 계단을 오르고 있어요 🔥\n\n계단 오르기 완료 후\n계단 벽면의 NFC에 태깅을 하면 운동 측정이 완료됩니다."
                             val lastChar = text.last()
                             if (lastChar == '1') {
                                 startTimer()
@@ -84,21 +93,25 @@ class Timer_Fragment : Fragment() {
 
     private fun startTimer() {
         if (!isTimerRunning) {
+            workstart = LocalDateTime.now()
             secondsElapsed = 0
             handler.post(runnable)
             isTimerRunning = true
             nfcTagMessageTextView.text = "계단을 오르는 중입니다"
+
             exerciseMessageTextView.visibility = View.VISIBLE
         }
     }
 
     private fun stopTimer() {
         if (isTimerRunning) {
+            workend = LocalDateTime.now()
             handler.removeCallbacks(runnable)
             isTimerRunning = false
             timerTextView.text = "0:00"
             nfcTagMessageTextView.text = "계단 벽면의 NFC를 태깅하세요"
             exerciseMessageTextView.visibility = View.INVISIBLE
+
         }
     }
 
